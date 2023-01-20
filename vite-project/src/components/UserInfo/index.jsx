@@ -1,11 +1,37 @@
-import { useSelector } from "react-redux";
+import { useState } from 'react'
+import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { createUser } from "../../redux/slices/userSlice";
 
 const UserInfo = () => {
-    console.log("rendered")
-    const userDetails = useSelector(state => state.user);
-    console.log(userDetails, "user state")
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            name,
+            password
+        }
+        dispatch(createUser(data));
+        navigate("/users")
+        setName("");
+        setPassword("");
+    }
+
     return <div>
-        <h2>Hello, {userDetails.userInfo.name && userDetails.userInfo.name}</h2>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>name:</label>
+                <input value={name} onChange={(e) => setName(e.target.value)} type="text" />
+            </div>
+            <div>
+                <label>password:</label>
+                <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" />
+            </div>
+            <button>Submit</button>
+        </form>
     </div>
 }
 

@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getUsers } from './userActions';
 
 const initialState = {
-    userInfo: {}
+    userInfo: {
+        name: '',
+        password: ''
+    },
+    loading: false,
+    users: []
 }
 
 const userSlice = createSlice({
@@ -11,9 +17,28 @@ const userSlice = createSlice({
         createUser(state, action) {
             state.userInfo.name = action.payload.name,
                 state.userInfo.password = action.payload.password
+        },
+        updateName(state, action) {
+            state.userInfo.name = action.payload
+        },
+        updatePassword(state, action) {
+            state.userInfo.password = action.payload
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getUsers.pending, (state) => {
+            state.loading = true;
+            state.error = null
+        }).addCase(getUsers.fulfilled, (state, action) => {
+            state.loading = false;
+            state.users = action.payload;
+        }).addCase(getUsers.rejected, (state, action) => {
+            console.log(action, "actions")
+            state.loading = false;
+            state.error = action.payload
+        })
     }
 });
 
-export const { createUser } = userSlice.actions;
+export const { createUser, updateName, updatePassword } = userSlice.actions;
 export default userSlice.reducer; 

@@ -44,5 +44,21 @@
 }
 
 label {
-  min-width: 200px;
+  display: block;
+  text-align: start;
+  font-size: 16px;
+}
+
+input {
+  font-size: 16px;
+  padding: 5px;
+}
+
+button {
+  margin: 10px 0;
+  font-size: 16px;
+  background-color: aqua;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: none;
 }
