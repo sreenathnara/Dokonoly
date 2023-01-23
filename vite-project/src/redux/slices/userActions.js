@@ -14,7 +14,6 @@ export const getUsers = createAsyncThunk(
                 "https://jsonplaceholder.typicode.com/users",
                 config
             )
-            console.log(response, 'data')
             return response.data;
 
         } catch (error) {
@@ -42,7 +41,6 @@ export const getUsersById = createAsyncThunk(
                 "https://jsonplaceholder.typicode.com/users/1",
                 config
             )
-            console.log(response, 'data')
             return response.data;
         } catch (error) {
             console.log(error, "error")

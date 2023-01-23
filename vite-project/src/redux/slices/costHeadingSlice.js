@@ -9,7 +9,7 @@ const costHeadingSlice = createSlice({
     initialState,
     reducers: {
         addCostHeading: (state, action) => {
-            // state.costHeadings.push(action.payload);
+            state.costHeadings.push(action.payload);
         },
         deleteCostHeadingById: (state, action) => {
             state.costHeadings = state.costHeadings.filter((item) => item.id !== action.payload)

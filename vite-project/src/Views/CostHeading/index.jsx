@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteCostHeadingById, deleteAllCostHeadings } from '../../redux/slices/costHeadingSlice';
+import { deleteCostHeadingById, deleteAllCostHeadings } from '../../redux/slices/costHeadingSlice'
 import './CostHeading.css';
 
 export const CostHeading = () => {
-    const { costHeadings } = useSelector(state => state.costheading);
+    const { costHeadings } = useSelector(state => state.costHeading);
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const costHeadingDeleteHandler = (id) => {
