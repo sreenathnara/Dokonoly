@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { deleteCostHeadingById, deleteAllCostHeadings } from '../../redux/slices/costHeadingSlice'
+import { Link, useNavigate } from 'react-router-dom';
+import { deleteCostHeadingById, deleteAllCostHeadings, editCostHeading } from '../../redux/slices/costHeadingSlice'
 import './CostHeading.css';
 
 export const CostHeading = () => {
     const { costHeadings } = useSelector(state => state.costHeading);
+    
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const costHeadingDeleteHandler = (id) => {
@@ -22,10 +23,11 @@ export const CostHeading = () => {
                 <button onClick={() => deleteAllcostHeadings()}>Delete All</button>
             </div>
             {costHeadings.length > 0 && costHeadings.map((item) => <div key={item.id}>
+                
                 <h3>{item.name}</h3>
                 <div className='flex-container'>
-                    <button className='edit-button'>Edit</button>
-                    <button type='button' onClick={() => costHeadingDeleteHandler(item.id)} className='delete-button'>Delete</button>
+                <div><button className='edit-button' onClick={()=>navigate('/edit/'+ item.id) }>Edit</button></div>
+                   <button type='button' onClick={() => costHeadingDeleteHandler(item.id)} className='delete-button'>Delete</button>
                 </div>
             </div>)}
         </div>

@@ -10,7 +10,7 @@ export const Add = () => {
 
     const costHeadingSubmitHandler = (e) => {
         e.preventDefault();
-        const data = { id: Math.random() * 10 + 1, name: costHeadingName }
+        const data = { id: Math.ceil(Math.random() * 1000000 + 1), name: costHeadingName }
         dispatch(addCostHeading(data));
         setCostHeadingName("");
         navigate("/costheading")
