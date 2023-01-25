@@ -6,17 +6,17 @@ import { useParams } from "react-router-dom";
 
 
 export const Edit = () => {
-    let  {id}  = useParams();
     const costHeadingData=useSelector(state=> state.costHeading.costHeadings)
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    let  {id}  = useParams();
     const [editUser, seteditUser] = useState({
         id:id,
         name:""
     })
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     useEffect(()=>{
         costHeadingData.map((data)=>{
-             if (data.id = id){
+             if (data.id == id){
                 seteditUser((prev)=>{
                     return{
                         ...prev,
@@ -25,9 +25,8 @@ export const Edit = () => {
                 })
              }
         })
-    },[costHeadingData])
+    },[])
     console.log(editUser)
-    //console.log(id)
 
     const editHandleChange =e=>{
         seteditUser((prev)=>{
@@ -43,18 +42,18 @@ export const Edit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = { id: id, name: editUser.name }
-        console.log(data)
+        console.log(data,'edit')
         dispatch(editCostHeading(data));
         seteditUser("");
         navigate("/costheading")
     }
-    return (
-        <section >
-            <form onSubmit={handleSubmit}>
-                <label>Edit CostHeading Name</label>
-                <input type="text" value={editUser.name} onChange={editHandleChange} />
-                <button type='submit' >Submit</button>
-            </form>
-        </section>
-    )
+        return (
+            <section >
+                <form onSubmit={handleSubmit}>
+                    <label>Edit CostHeading Name</label>
+                    <input type="text" value={editUser.name} onChange={editHandleChange} />
+                    <button type='submit' >Submit</button>
+                </form>
+            </section>
+        )
 }

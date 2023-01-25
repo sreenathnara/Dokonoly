@@ -18,9 +18,9 @@ const costHeadingSlice = createSlice({
             state.costHeadings = [];
         },
         editCostHeading:(state,action)=>{
-            state.costHeadings=state.costHeadings.map(data=>{
-                console.log(data)
-                 if(data.id === action.payload.id){
+            state.costHeadings.map(data=>{
+                console.log(action.payload,'payload')
+                 if(data.id == action.payload.id){
                      data.name = action.payload.name
                 }
              })
