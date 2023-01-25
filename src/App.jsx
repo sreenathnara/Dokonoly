@@ -9,6 +9,10 @@ import { Edit } from "./Views/CostHeading/edit";
 
 function App() {
   console.log("ljlkjlk")
+
+
+
+
   return (
     <Router>
       <Routes>
