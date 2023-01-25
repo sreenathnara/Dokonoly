@@ -17,10 +17,18 @@ const costHeadingSlice = createSlice({
         deleteAllCostHeadings: (state) => {
             state.costHeadings = [];
         },
+        editCostHeading:(state,action)=>{
+            state.costHeadings=state.costHeadings.map(data=>{
+                console.log(data)
+                 if(data.id === action.payload.id){
+                     data.name = action.payload.name
+                }
+             })
+        }
 
     }
 })
 console.log(costHeadingSlice, "slice ")
 
-export const { addCostHeading, deleteCostHeadingById, deleteAllCostHeadings } = costHeadingSlice.actions;
+export const { addCostHeading, deleteCostHeadingById, deleteAllCostHeadings,editCostHeading } = costHeadingSlice.actions;
 export default costHeadingSlice.reducer;
