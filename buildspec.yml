@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      # Install Node.js dependencies
+      - npm install   # Use 'yarn install' if you prefer yarn
+
+  build:
+    commands:
+      # Build the React application
+      - npm run build   # Use 'yarn build' if you prefer yarn
+
+artifacts:
+  files:
+    - '**/*'
